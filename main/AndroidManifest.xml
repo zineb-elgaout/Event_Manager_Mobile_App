@@ -44,12 +44,12 @@
         <activity
             android:name=".activities.LoginActivity"
             android:exported="false"
-            tools:ignore="MissingClass" />
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name=".activities.RegisterActivity"
             android:exported="false"
-            tools:ignore="MissingClass" />
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name=".activities.MainActivity"
