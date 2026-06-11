@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.eventmanager.app.fragments.HomeFragment"
+        android:label="Accueil"
+        tools:layout="@layout/fragment_home"/>
+
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.eventmanager.app.fragments.ExploreFragment"
+        android:label="Explorer"
+        tools:layout="@layout/fragment_explore"/>
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.eventmanager.app.fragments.MapFragment"
+        android:label="Carte"
+        tools:layout="@layout/fragment_map"/>
+
+    <fragment
+        android:id="@+id/ticketsFragment"
+        android:name="com.eventmanager.app.fragments.TicketsFragment"
+        android:label="Billets"
+        tools:layout="@layout/fragment_tickets"/>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.eventmanager.app.fragments.ProfileFragment"
+        android:label="Profil"
+        tools:layout="@layout/fragment_profile"/>
+
+</navigation>

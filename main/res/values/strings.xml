@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EventManager</string>
+    <string name="google_maps_key">YOUR_GOOGLE_MAPS_API_KEY</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Découvrez des événements</string>
+    <string name="onboarding_desc_1">Concerts, conférences, expositions… trouvez l\'événement qui vous correspond.</string>
+    <string name="onboarding_title_2">Réservez en quelques secondes</string>
+    <string name="onboarding_desc_2">Sélectionnez vos places et recevez votre billet instantanément.</string>
+    <string name="onboarding_title_3">Ne ratez plus rien</string>
+    <string name="onboarding_desc_3">Rappels automatiques, billets QR Code et partage facile avec vos amis.</string>
+    <string name="btn_next">Suivant</string>
+    <string name="btn_skip">Ignorer</string>
+    <string name="btn_get_started">Commencer</string>
+
+    <!-- Auth -->
+    <string name="login_title">Bon retour !</string>
+    <string name="login_subtitle">Connectez-vous pour accéder à vos événements</string>
+    <string name="register_title">Créer un compte</string>
+    <string name="register_subtitle">Rejoignez des milliers de passionnés</string>
+    <string name="hint_email">Adresse e-mail</string>
+    <string name="hint_password">Mot de passe</string>
+    <string name="hint_name">Nom complet</string>
+    <string name="btn_login">Se connecter</string>
+    <string name="btn_register">S\'inscrire</string>
+    <string name="btn_forgot_password">Mot de passe oublié ?</string>
+    <string name="no_account">Pas encore de compte ?</string>
+    <string name="have_account">Déjà un compte ?</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Accueil</string>
+    <string name="nav_explore">Explorer</string>
+    <string name="nav_map">Carte</string>
+    <string name="nav_tickets">Billets</string>
+    <string name="nav_profile">Profil</string>
+
+    <!-- Home -->
+    <string name="greeting_morning">Bonjour</string>
+    <string name="greeting_afternoon">Bonsoir</string>
+    <string name="section_featured">À la une</string>
+    <string name="section_upcoming">Événements à venir</string>
+    <string name="section_categories">Catégories</string>
+    <string name="see_all">Voir tout</string>
+    <string name="search_hint">Concerts, conférences, expos…</string>
+
+    <!-- Categories -->
+    <string name="cat_all">Tous</string>
+    <string name="cat_concert">Concerts</string>
+    <string name="cat_conference">Conférences</string>
+    <string name="cat_expo">Expositions</string>
+    <string name="cat_sport">Sport</string>
+    <string name="cat_festival">Festivals</string>
+    <string name="cat_theater">Théâtre</string>
+
+    <!-- Event -->
+    <string name="free">Gratuit</string>
+    <string name="btn_book">Réserver</string>
+    <string name="btn_share">Partager</string>
+    <string name="seats_available">places disponibles</string>
+
+    <!-- Errors -->
+    <string name="error_network">Connexion impossible. Vérifiez votre réseau.</string>
+    <string name="error_generic">Une erreur est survenue.</string>
+    <string name="error_empty_fields">Veuillez remplir tous les champs.</string>
+</resources>
