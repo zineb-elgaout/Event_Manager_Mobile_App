@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_map_bottom_sheet"
+    android:maxHeight="600dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_onboarding_dot_inactive"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/tvEventTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:fontFamily="@font/urbanist_bold"
+            android:gravity="center"
+            tools:text="Marrakech Music Festival 2026"/>
+
+        <TextView
+            android:id="@+id/tvEventDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:fontFamily="@font/urbanist_regular"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            tools:text="15 Juin 2026 • 20h00"/>
+
+        <TextView
+            android:id="@+id/tvEventLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:fontFamily="@font/urbanist_regular"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            tools:text="Palmeraie, Marrakech"/>
+
+        <!-- ViewPager for multiple tickets -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerTickets"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"/>
+
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/dotsIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            app:dotsColor="@color/border"
+            app:dotsSize="6dp"
+            app:dotsCornerRadius="3dp"
+            app:dotsSpacing="4dp"
+            app:dotsWidthFactor="2.5"
+            app:selectedDotColor="@color/primary"/>
+
+        <!-- Action buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShare"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="Partager"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:fontFamily="@font/urbanist_semibold"
+                app:icon="@drawable/ic_share"
+                app:iconTint="@color/text_primary"
+                style="@style/Widget.EventManager.Button.Secondary"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClose"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="Fermer"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/urbanist_semibold"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="14dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

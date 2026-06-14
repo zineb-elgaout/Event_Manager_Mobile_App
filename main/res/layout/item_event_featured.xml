@@ -1,6 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginEnd="4dp"
+    android:clickable="true"
+    android:focusable="true">
 
-</FrameLayout>
+    <!-- Background image -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivFeaturedImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/RoundedImage20"
+        android:background="@drawable/placeholder_event"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Gradient overlay -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_overlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Category badge -->
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_price_badge"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:fontFamily="@font/urbanist_bold"
+        android:layout_margin="14dp"
+        tools:text="FESTIVAL"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Free badge (optional) -->
+    <TextView
+        android:id="@+id/tvFreeBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_category_chip_selected"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:text="GRATUIT"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:fontFamily="@font/urbanist_bold"
+        android:layout_margin="14dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Title + info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvFeaturedTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/urbanist_bold"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:shadowColor="#80000000"
+            android:shadowRadius="4"
+            tools:text="Marrakech Music Festival 2026"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="6dp">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_location"
+                app:tint="@color/white"/>
+
+            <TextView
+                android:id="@+id/tvFeaturedLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:textColor="#E0E0E0"
+                android:textSize="12sp"
+                android:fontFamily="@font/urbanist_regular"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="Palmeraie, Marrakech"/>
+
+            <TextView
+                android:id="@+id/tvFeaturedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:fontFamily="@font/urbanist_semibold"
+                tools:text="15 Juin"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

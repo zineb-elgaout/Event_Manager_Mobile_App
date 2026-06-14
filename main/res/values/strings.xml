@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">EventManager</string>
-    <string name="google_maps_key">YOUR_GOOGLE_MAPS_API_KEY</string>
 
     <!-- Onboarding -->
     <string name="onboarding_title_1">Découvrez des événements</string>

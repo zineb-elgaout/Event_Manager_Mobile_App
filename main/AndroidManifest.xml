@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -12,6 +14,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+
 
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
 
@@ -24,6 +27,10 @@
         tools:replace="android:supportsRtl"
         android:theme="@style/Theme.EventManager"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
 
         <activity
             android:name=".activities.SplashActivity"
@@ -55,10 +62,41 @@
             android:name=".activities.MainActivity"
             android:exported="false"
             tools:ignore="MissingClass" />
+        <activity
+            android:name=".activities.EventDetailActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activities.QRScanActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EventManager.Splash"/>
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+        <activity
+            android:name=".activities.BookingActivity"
+            android:exported="false"/>
+
+
+
+        <receiver
+            android:name=".receivers.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Widget Provider -->
+        <receiver
+            android:name=".widgets.EventWidgetProvider"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info"/>
+        </receiver>
+
 
     </application>
 </manifest>

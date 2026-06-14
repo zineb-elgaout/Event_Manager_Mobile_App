@@ -69,4 +69,28 @@
         <item name="cornerSizeTopRight">24dp</item>
     </style>
 
+    <style name="RoundedImage12" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">14dp</item>
+    </style>
+
+    <style name="RoundedImage20" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="RoundedImageBottom20" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">28dp</item>
+        <item name="cornerSizeBottomRight">28dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+    </style>
+    <style name="RoundedImageTop16" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
 </resources>

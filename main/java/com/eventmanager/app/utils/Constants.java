@@ -50,4 +50,34 @@ public final class Constants {
     public static final String CAT_SPORT      = "Sport";
     public static final String CAT_FESTIVAL   = "Festival";
     public static final String CAT_THEATER    = "Théâtre";
+
+    // Ticket / Booking status
+    public static final String STATUS_VALID     = "VALID";
+    public static final String STATUS_USED      = "USED";
+    public static final String STATUS_CANCELLED = "CANCELLED";
+
+    // Max tickets per booking
+    public static final int MAX_TICKETS_PER_BOOKING = 8;
+
+    // Tabs Tickets
+    public static final int TICKET_TAB_UPCOMING = 0;
+    public static final int TICKET_TAB_PAST     = 1;
+
+    // QR Scan result
+    public static final String EXTRA_SCAN_RESULT = "scan_result";
+
+    // Notifications
+    public static final String CHANNEL_ID_REMINDERS = "event_reminders";
+    public static final String CHANNEL_NAME_REMINDERS = "Rappels d'événements";
+
+    // Reminder timings (en millisecondes avant l'événement)
+    public static final long REMINDER_1_DAY_BEFORE = 24 * 60 * 60 * 1000L;
+    public static final long REMINDER_1_HOUR_BEFORE = 60 * 60 * 1000L;
+
+    // Work tags
+    public static final String WORK_TAG_REMINDER = "event_reminder_";
+
+    // Widget
+    public static final String ACTION_WIDGET_UPDATE = "com.eventmanager.app.WIDGET_UPDATE";
+    public static final String PREF_WIDGET_EVENT_ID = "widget_event_id";
 }

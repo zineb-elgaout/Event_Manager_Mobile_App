@@ -89,7 +89,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(this::navigateNext, 2800);
     }
 
-    private void navigateNext() {
+    /*private void navigateNext() {
         Intent intent;
 
         if (!preferenceManager.isOnboardingDone()) {
@@ -101,6 +101,12 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         startActivity(intent);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        finish();
+    }*/
+
+    private void navigateNext() {
+        startActivity(new Intent(this, OnboardingActivity.class));
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         finish();
     }

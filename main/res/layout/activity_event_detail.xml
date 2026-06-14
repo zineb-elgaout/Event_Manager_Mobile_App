@@ -1,6 +1,347 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
 
-</FrameLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="120dp">
+
+            <!-- Hero image -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivHeroImage"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/placeholder_event"
+                app:shapeAppearanceOverlay="@style/RoundedImageBottom20"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <!-- Gradient overlay for buttons visibility -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/bg_gradient_overlay"
+                android:rotation="180"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <!-- Back button -->
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="9dp"
+                android:src="@drawable/ic_back"
+                android:background="@drawable/bg_circle_overlay"
+                android:layout_marginTop="48dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <!-- Share button -->
+            <ImageView
+                android:id="@+id/btnShare"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="9dp"
+                android:src="@drawable/ic_share"
+                android:background="@drawable/bg_circle_overlay"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- Category badge -->
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_price_badge"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:fontFamily="@font/urbanist_bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"
+                tools:text="FESTIVAL"
+                app:layout_constraintBottom_toBottomOf="@id/ivHeroImage"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <!-- ═══ Content ═══ -->
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:fontFamily="@font/urbanist_bold"
+                android:lineSpacingExtra="3dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                tools:text="Marrakech Music Festival 2026"
+                app:layout_constraintTop_toBottomOf="@id/ivHeroImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- Organizer -->
+            <TextView
+                android:id="@+id/tvOrganizer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:fontFamily="@font/urbanist_regular"
+                android:layout_marginTop="6dp"
+                android:layout_marginHorizontal="20dp"
+                tools:text="Organisé par Marrakech Events Group"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- Info cards row: Date + Location -->
+            <LinearLayout
+                android:id="@+id/infoCardsContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                app:layout_constraintTop_toBottomOf="@id/tvOrganizer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- Date Card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card_event"
+                    android:padding="14dp"
+                    android:layout_marginEnd="6dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:padding="8dp"
+                        android:background="@drawable/bg_category_tag"
+                        android:src="@drawable/ic_calendar"
+                        app:tint="@color/primary"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="10dp">
+
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_primary"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/urbanist_bold"
+                            tools:text="15 Juin 2026"/>
+
+                        <TextView
+                            android:id="@+id/tvTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/urbanist_regular"
+                            tools:text="20h00"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Location Card -->
+                <LinearLayout
+                    android:id="@+id/locationCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card_event"
+                    android:padding="14dp"
+                    android:layout_marginStart="6dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:padding="8dp"
+                        android:background="@drawable/bg_category_tag"
+                        android:src="@drawable/ic_location"
+                        app:tint="@color/primary"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="10dp">
+
+                        <TextView
+                            android:id="@+id/tvLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_primary"
+                            android:textSize="13sp"
+                            android:fontFamily="@font/urbanist_bold"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            tools:text="Palmeraie"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Voir sur la carte"
+                            android:textColor="@color/primary"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/urbanist_semibold"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Available seats -->
+            <LinearLayout
+                android:id="@+id/seatsContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_category_tag"
+                android:padding="12dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginHorizontal="20dp"
+                app:layout_constraintTop_toBottomOf="@id/infoCardsContainer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_profile"
+                    app:tint="@color/primary"/>
+
+                <TextView
+                    android:id="@+id/tvSeats"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/primary"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/urbanist_semibold"
+                    tools:text="1200 places disponibles"/>
+            </LinearLayout>
+
+            <!-- Description title -->
+            <TextView
+                android:id="@+id/tvDescTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="À propos de l'événement"
+                android:textColor="@color/text_primary"
+                android:textSize="17sp"
+                android:fontFamily="@font/urbanist_bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginHorizontal="20dp"
+                app:layout_constraintTop_toBottomOf="@id/seatsContainer"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <!-- Description -->
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:fontFamily="@font/urbanist_regular"
+                android:lineSpacingExtra="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                tools:text="Le plus grand festival de musique électronique..."
+                app:layout_constraintTop_toBottomOf="@id/tvDescTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- Tags -->
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/tagsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:flexWrap="wrap"
+                android:layout_marginTop="14dp"
+                android:layout_marginHorizontal="20dp"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom bar: price + Réserver -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_bottom_bar"
+        android:padding="20dp"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prix"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:fontFamily="@font/urbanist_regular"/>
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:fontFamily="@font/urbanist_bold"
+                tools:text="450 MAD"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBook"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:paddingHorizontal="32dp"
+            android:text="@string/btn_book"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="@font/urbanist_semibold"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="14dp"/>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
