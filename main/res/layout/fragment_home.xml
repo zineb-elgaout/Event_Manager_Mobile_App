@@ -28,8 +28,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="20dp"
-                    android:paddingTop="52dp"
-                    android:paddingBottom="16dp">
+                    android:paddingTop="38dp"
+                    android:paddingBottom="38dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -38,24 +38,17 @@
                         android:layout_centerVertical="true"
                         android:layout_toStartOf="@id/ivAvatar">
 
-                        <TextView
-                            android:id="@+id/tvSubGreeting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Découvrez les événements"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="13sp"
-                            android:fontFamily="@font/urbanist_regular"/>
 
                         <TextView
                             android:id="@+id/tvGreeting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/text_primary"
-                            android:textSize="22sp"
-                            android:fontFamily="@font/urbanist_bold"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/urbanist_regular"
                             android:layout_marginTop="2dp"
-                            tools:text="Bonjour, Salma 👋"
+                            android:layout_marginEnd="4dp"
+                            tools:text="Bonjour, Salma 👋 "
                             xmlns:tools="http://schemas.android.com/tools"/>
                     </LinearLayout>
 
@@ -66,11 +59,12 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/placeholder_avatar"
-                        app:civ_border_width="2dp"
+                        app:civ_border_width="1dp"
                         app:civ_border_color="@color/primary"/>
                 </RelativeLayout>
 
                 <!-- ═══ Search Bar ═══ -->
+                <!-- Remplace le LinearLayout searchBar par ceci -->
                 <LinearLayout
                     android:id="@+id/searchBar"
                     android:layout_width="match_parent"
@@ -80,24 +74,35 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:background="@drawable/bg_input_field"
-                    android:paddingHorizontal="16dp"
-                    android:clickable="true"
-                    android:focusable="true">
+                    android:paddingHorizontal="16dp">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/ic_search"/>
 
-                    <TextView
+                    <EditText
+                        android:id="@+id/etSearch"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:layout_marginStart="10dp"
-                        android:text="@string/search_hint"
-                        android:textColor="@color/text_hint"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/search_hint"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_hint"
                         android:textSize="14sp"
-                        android:fontFamily="@font/urbanist_regular"/>
+                        android:fontFamily="@font/urbanist_regular"
+                        android:inputType="text"
+                        android:imeOptions="actionSearch"
+                        android:maxLines="1"/>
+
+                    <ImageView
+                        android:id="@+id/btnClearSearch"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_close"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <!-- ═══ Featured Section ═══ -->

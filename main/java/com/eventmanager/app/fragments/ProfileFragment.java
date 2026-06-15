@@ -99,9 +99,11 @@ public class ProfileFragment extends Fragment {
         // Nombre total de tickets
         int totalTickets = ticketDAO.getByUser(userId).size();
 
-        // Nombre de favoris (stocké en mémoire dans ViewModel — on met 0 ici
-        // car les favoris ne sont pas encore persistés en base)
-        int favorites = preferenceManager.getCategoryPreferences().size();
+        // Nombre de favoris (stocké en mémoire dans ViewModel
+        int favCount = new com.eventmanager.app.database.FavoriteDAO(requireContext())
+                .countFavorites(preferenceManager.getUserId());
+        binding.tvStatFavorites.setText(String.valueOf(favCount));
+        binding.tvFavoritesCount.setText(String.valueOf(favCount));
 
         binding.tvStatEvents.setText(String.valueOf(totalEvents));
         binding.tvStatTickets.setText(String.valueOf(totalTickets));
@@ -146,9 +148,7 @@ public class ProfileFragment extends Fragment {
     // ─── Menu Listeners ───────────────────────────────────────────────────────
 
     private void setupMenuListeners() {
-        binding.btnSettings.setOnClickListener(v ->
-                Toast.makeText(getContext(), "Paramètres à venir", Toast.LENGTH_SHORT).show()
-        );
+
 
         binding.menuBookings.setOnClickListener(v -> {
             requireActivity().findViewById(R.id.bottomNavigation)
@@ -159,9 +159,15 @@ public class ProfileFragment extends Fragment {
                     .setSelectedItemId(R.id.ticketsFragment);
         });
 
-        binding.menuFavorites.setOnClickListener(v ->
-                Toast.makeText(getContext(), "Favoris — persistance en base à venir", Toast.LENGTH_SHORT).show()
-        );
+        binding.menuFavorites.setOnClickListener(v -> {
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
+                            R.anim.slide_in_left, R.anim.slide_out_right)
+                    .replace(R.id.nav_host_fragment, new FavoritesFragment())
+                    .addToBackStack(null)
+                    .commit();
+        });
 
         binding.menuNotifications.setOnClickListener(v -> {
             Intent intent = new Intent(android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS);

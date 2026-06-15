@@ -80,6 +80,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 binding.tvPrice.setText(String.format(Locale.getDefault(), "%.0f MAD", event.getPrice()));
             }
 
+            // Icône favori selon l'état RÉEL de l'event
             binding.ivFavorite.setImageResource(
                     event.isFavorite() ? R.drawable.ic_heart_filled : R.drawable.ic_heart_outline
             );
@@ -91,11 +92,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     .into(binding.ivEventImage);
 
             binding.getRoot().setOnClickListener(v -> clickListener.onEventClick(event));
+
             binding.ivFavorite.setOnClickListener(v -> {
+                // On délègue TOUT au ViewModel — lui met à jour event.isFavorite()
+                // et re-émet la liste via LiveData → DiffUtil → rebind automatique
                 favoriteListener.onFavoriteClick(event);
-                binding.ivFavorite.setImageResource(
-                        event.isFavorite() ? R.drawable.ic_heart_outline : R.drawable.ic_heart_filled
-                );
             });
         }
     }

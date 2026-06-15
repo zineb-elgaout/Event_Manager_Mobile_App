@@ -8,11 +8,11 @@ import com.eventmanager.app.utils.Constants;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    // ─── Tables ───────────────────────────────────────────────────────────────
-    public static final String TABLE_BOOKINGS = "bookings";
-    public static final String TABLE_TICKETS  = "tickets";
+    public static final String TABLE_BOOKINGS  = "bookings";
+    public static final String TABLE_TICKETS   = "tickets";
+    public static final String TABLE_FAVORITES = "favorites";
 
-    // ─── Common columns ──────────────────────────────────────────────────────
+    // Bookings / Tickets columns
     public static final String COL_ID             = "id";
     public static final String COL_EVENT_ID       = "event_id";
     public static final String COL_USER_ID        = "user_id";
@@ -22,15 +22,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_EVENT_DATE     = "event_date";
     public static final String COL_EVENT_LOCATION = "event_location";
     public static final String COL_EVENT_IMAGE    = "event_image";
+    public static final String COL_QUANTITY       = "quantity";
+    public static final String COL_TOTAL_PRICE    = "total_price";
+    public static final String COL_BOOKING_ID     = "booking_id";
+    public static final String COL_QR_CODE        = "qr_code";
+    public static final String COL_SEAT_NUMBER    = "seat_number";
 
-    // ─── Bookings specific ───────────────────────────────────────────────────
-    public static final String COL_QUANTITY    = "quantity";
-    public static final String COL_TOTAL_PRICE = "total_price";
+    // Favorites columns
+    public static final String COL_FAV_EVENT_ID      = "event_id";
+    public static final String COL_FAV_USER_ID       = "user_id";
+    public static final String COL_FAV_TITLE         = "title";
+    public static final String COL_FAV_DATE          = "date";
+    public static final String COL_FAV_LOCATION      = "location";
+    public static final String COL_FAV_IMAGE_URL     = "image_url";
+    public static final String COL_FAV_PRICE         = "price";
+    public static final String COL_FAV_CATEGORY      = "category";
+    public static final String COL_FAV_DESCRIPTION   = "description";
+    public static final String COL_FAV_ORGANIZER     = "organizer";
+    public static final String COL_FAV_LATITUDE      = "latitude";
+    public static final String COL_FAV_LONGITUDE     = "longitude";
+    public static final String COL_FAV_SEATS         = "available_seats";
 
-    // ─── Tickets specific ────────────────────────────────────────────────────
-    public static final String COL_BOOKING_ID  = "booking_id";
-    public static final String COL_QR_CODE     = "qr_code";
-    public static final String COL_SEAT_NUMBER = "seat_number";
+    // DB Version — incrémenté à 3 pour la migration favorites étendue
+    private static final int DB_VERSION = 3;
 
     private static DatabaseHelper instance;
 
@@ -42,12 +56,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private DatabaseHelper(Context context) {
-        super(context, Constants.DB_NAME, null, Constants.DB_VERSION);
+        super(context, Constants.DB_NAME, null, DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_BOOKINGS + " (" +
+        // Bookings
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_BOOKINGS + " (" +
                 COL_ID + " TEXT PRIMARY KEY, " +
                 COL_EVENT_ID + " TEXT NOT NULL, " +
                 COL_USER_ID + " TEXT NOT NULL, " +
@@ -61,7 +76,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_EVENT_IMAGE + " TEXT" +
                 ")");
 
-        db.execSQL("CREATE TABLE " + TABLE_TICKETS + " (" +
+        // Tickets
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_TICKETS + " (" +
                 COL_ID + " TEXT PRIMARY KEY, " +
                 COL_BOOKING_ID + " TEXT NOT NULL, " +
                 COL_EVENT_ID + " TEXT NOT NULL, " +
@@ -75,12 +91,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_EVENT_LOCATION + " TEXT, " +
                 COL_EVENT_IMAGE + " TEXT" +
                 ")");
+
+        // Favorites — avec tous les champs nécessaires pour EventDetail
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_FAVORITES + " (" +
+                "event_id TEXT NOT NULL, " +
+                "user_id TEXT NOT NULL, " +
+                "title TEXT, " +
+                "date INTEGER, " +
+                "location TEXT, " +
+                "image_url TEXT, " +
+                "price REAL, " +
+                "category TEXT, " +
+                "description TEXT, " +
+                "organizer TEXT, " +
+                "latitude REAL, " +
+                "longitude REAL, " +
+                "available_seats INTEGER, " +
+                "PRIMARY KEY (event_id, user_id)" +
+                ")");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOOKINGS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TICKETS);
-        onCreate(db);
+        if (oldVersion < 2) {
+            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_FAVORITES + " (" +
+                    "event_id TEXT NOT NULL, user_id TEXT NOT NULL, " +
+                    "title TEXT, date INTEGER, location TEXT, image_url TEXT, " +
+                    "price REAL, category TEXT, " +
+                    "PRIMARY KEY (event_id, user_id)" +
+                    ")");
+        }
+        if (oldVersion < 3) {
+            // Ajoute les colonnes manquantes à la table favorites existante
+            String[] newColumns = {
+                    "description TEXT",
+                    "organizer TEXT",
+                    "latitude REAL",
+                    "longitude REAL",
+                    "available_seats INTEGER"
+            };
+            for (String col : newColumns) {
+                try {
+                    db.execSQL("ALTER TABLE " + TABLE_FAVORITES + " ADD COLUMN " + col);
+                } catch (Exception e) {
+                    // Colonne déjà existante — ignore
+                    android.util.Log.w("DB", "Column already exists: " + col);
+                }
+            }
+        }
     }
 }

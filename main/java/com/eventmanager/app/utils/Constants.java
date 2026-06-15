@@ -21,7 +21,7 @@ public final class Constants {
 
     // Database
     public static final String DB_NAME    = "eventmanager.db";
-    public static final int    DB_VERSION = 1;
+    public static final int    DB_VERSION = 3;
 
     // API
     public static final String BASE_URL         = "https://api.eventmanager.mock/v1/";

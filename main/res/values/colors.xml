@@ -29,7 +29,7 @@
     <color name="info">#4361EE</color>
 
     <!-- Navigation -->
-    <color name="nav_selected">#E63946</color>
+    <color name="nav_selected">#ffff</color>
     <color name="nav_unselected">#4A4A60</color>
 
     <!-- Divider / Border -->
