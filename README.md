@@ -39,6 +39,16 @@ A powerful, feature-rich Android application for managing events with an intuiti
 
 Event Manager is a comprehensive Android application designed to streamline event management. Whether you're organizing conferences, parties, weddings, or any other events, this app provides a complete solution for event creation, booking, and attendee management with modern UI/UX patterns.
 
+
+<img width="1806" height="928" alt="Image4" src="https://github.com/user-attachments/assets/1b18c76f-8b8f-4c61-a0a2-9c84f1eddf05" />
+
+<img width="1860" height="749" alt="Image1" src="https://github.com/user-attachments/assets/dfdecd6b-a6bc-4f3e-b83a-0b625d54be01" />
+
+<img width="1819" height="928" alt="Image2" src="https://github.com/user-attachments/assets/2699f186-e0fd-4071-99b9-11e54d8dbc9d" />
+
+<img width="1820" height="928" alt="Image3" src="https://github.com/user-attachments/assets/6d60d795-dcfa-44b2-9724-ec4fa5d56b0e" />
+
+
 ### Key Highlights
 - 🚀 **Fast & Responsive** - Optimized performance for seamless user experience
 - 🔒 **Secure** - Authentication and encrypted data transmission
