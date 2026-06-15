@@ -444,19 +444,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 👤 Contact & Support
-
-### Developer
-- **GitHub**: [@zineb-elgaout](https://github.com/zineb-elgaout)
-- **Email**: [Your Email Here]
-- **LinkedIn**: [Your LinkedIn Profile]
-
-### Support
-- 📧 **Email Support**: support@eventmanager.app
-- 🐛 **Report Bugs**: [GitHub Issues](https://github.com/zineb-elgaout/Event_Manager_Mobile_App/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/zineb-elgaout/Event_Manager_Mobile_App/discussions)
-
----
 
 ## 🙏 Acknowledgments
 
@@ -471,6 +458,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ### ⭐ If you found this project helpful, please consider giving it a star! ⭐
 
-**Made with ❤️ by [Zineb Elgaout](https://github.com/zineb-elgaout)**
+**Made with ❤️ by [Zineb Elgaout](https://github.com/zineb-elgaout) and Soukaina Mouna **
 
 </div>
